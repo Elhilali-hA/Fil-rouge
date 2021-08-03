@@ -1,0 +1,36 @@
+
+Fournisseurs:
+-Ajout
+-liste fournissers
+-commande fournisseur
+-livraison des produits
+
+produit:
+-Ajout
+-produit disponible
+-produits perimés
+-mouvement de stock
+
+personel:
+creation employé
+creation fiche salaire
+liste personnel
+liste paie
+
+vente:
+- ajout client
+-operation de vente
+-produits vendus
+-routeur sur vente
+
+administration:
+-creer un utilisateur
+-gestion des privileges
+
+
+compabilité:
+
+
+
+
+
