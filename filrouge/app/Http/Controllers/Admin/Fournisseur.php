@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\categorie;
+use App\Http\Controllers\Controller;
+
+
+use App\Models\Fournisseur as ModelFournisseur;
 use Illuminate\Http\Request;
-use APP\Models\produit;
 
-class produitController extends Controller
+
+class fournisseur extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +18,8 @@ class produitController extends Controller
      */
     public function index()
     {
-        //
+        
+       return view('admin.fournisseurs.home')->with('fournisseurs', ModelFournisseur::all());
     }
 
     /**
@@ -25,7 +29,7 @@ class produitController extends Controller
      */
     public function create()
     {
-        return view('admin.produit.ajout');
+        return view('admin.fournisseurs.ajout');
     }
 
     /**
@@ -36,23 +40,24 @@ class produitController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request, [
             'id' => 'required',
-            'title' => 'required',
-            'psin' => 'required',
-            'featured' => 'required|image',
-            'prix' => 'required',
-            'category_nom' => 'required'
+            'nom' => 'required',
+            'ville' => 'required',
+            
         ]);
+        // dd($request->all());
 
-        $produit = produit::create([
-            'title' => $request->title,
-            'psin' => $request->psin,
-            'category_nom' => $request->category_nom,
-            'prix' => $request->prix,
-
-        ]);
-        return redirect()->route('produit');
+        $four = new ModelFournisseur;
+            
+         $four->nom = $request->nom;
+         $four->id  = $request->id;
+         $four->ville = $request->ville;
+            
+        
+        $four->save();
+        
+        return redirect()->route('fournisseur');
     }
 
     /**
@@ -74,7 +79,10 @@ class produitController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $four = ModelFournisseur::find($id);
+
+        return view('admin.fournisseurs.edit')->with('fournisseurs', $four);
     }
 
     /**
@@ -86,7 +94,22 @@ class produitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        // $this->validate($request, [
+        //     'id' => 'required',
+        //     'nom' =>  'required',
+        //     'ville' => 'required'
+        // ]);
+        
+        $four = ModelFournisseur::find($id);
+
+        $four->id = $request->id;
+        $four->nom = $request->nom;
+        $four->ville = $request->ville;
+
+        $four->save();
+
+        return redirect()->route('fournisseur');
     }
 
     /**
@@ -97,6 +120,8 @@ class produitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $four = ModelFournisseur::find($id);
+        $four->delete();
+        return redirect()->route('fournisseur');
     }
 }

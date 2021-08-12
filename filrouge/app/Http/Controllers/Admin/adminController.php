@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Categorie as ModelCategorie;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 
-class Categorie extends Controller
+class adminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class Categorie extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        return view('admin.dashboard');
     }
 
     /**
@@ -24,7 +25,7 @@ class Categorie extends Controller
      */
     public function create()
     {
-        return view('admin.categorie.ajout');
+        return view('admin.fournisseur.ajout');
     }
 
     /**
@@ -35,19 +36,7 @@ class Categorie extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'id' => 'required',
-            'nom' => 'required',
-            
-        ]);
-        // dd($request->all());
-
-        $category = new ModelCategorie;
-        $category->nom = $request->nom;
-        $category->id = $request->id;
-        $category->save();
         
-        return redirect()->route('categories');
     }
 
     /**

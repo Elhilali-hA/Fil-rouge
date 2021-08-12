@@ -9,16 +9,19 @@
     <section>
 
         
-        <div class="navbar navbar-light bg-info">
+        <div class="navbar navbar-light bg-primary">
             <div class="col-md-8 flex d-flex row justify-content-around">
                 <a class="navbar-brand" href="#">Home</a> 
                 <a class="navbar-brand" href="#">Produit</a> 
                 <a class="navbar-brand" href="#">Contacter-nous</a> 
             </div>
             @if (Route::has('login'))
-                <div class="float-right">
+            <div class="float-right">
+                    {{-- @if (Route::has('auth'))
+                    <a href="{{ route('dashboard') }}">dash</a>
+                    @endif    --}}
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                        <a href="{{ url('logout') }}" class="text-white text-gray-700 underline">logout</a>
                     @else
                         <a class="text-white" href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
     

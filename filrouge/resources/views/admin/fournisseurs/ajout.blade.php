@@ -7,6 +7,8 @@
         </div>
         <div class="modal-body">
           <p>Fournisseur donnée :</p>
+          <form action="{{ route('fournisseur.store') }}" method="POST">
+            {{ csrf_field() }}
           <div class="d-flex flex-column">
             <label for="" >Id :</label>
             <input name='id' type="text">
@@ -15,9 +17,13 @@
             <label for="">Nom de founisseur:</label>
             <input name='nom' type="text">
           </div>
+          <div class="d-flex flex-column">
+            <label for="">Ville:</label>
+            <input name='ville' type="text">
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-info" data-dismiss="modal">Ajouter</button>
+          <button type="submit" class="btn btn-info">Ajouter</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

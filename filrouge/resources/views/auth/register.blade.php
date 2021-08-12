@@ -55,6 +55,16 @@
                             </div>
                         </div>
 
+                        {{-- <div>
+
+                            <label for="user">Choose Role:</label>
+                             <select id="user">
+                             <option value="employe">Employe</option>
+                             <option value="user">User</option>
+                            </select>
+
+                        </div> --}}
+
                         <div class="form-group d-flex flex-column ">
                             <label for="password-confirm" class="col-md col-form-label">{{ __('Confirm Password') }}</label>
 

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\stock as Modelstock;
 use Illuminate\Http\Request;
 
-class adminController extends Controller
+class stock extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class adminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        return view('admin.stock.voir')->with('fournisseurs', Modelstock::all());
     }
 
     /**
@@ -23,7 +25,7 @@ class adminController extends Controller
      */
     public function create()
     {
-        return view('admin.fournisseur.ajout');
+        //
     }
 
     /**
@@ -34,17 +36,7 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'name' => 'required',
-            
-        // ]);
-        // // dd($request->all());
-
-        // $category = new ModelsCategory;
-        // $category->name = $request->name;
-        // $category->save();
-        
-        // return redirect()->route('categories')->with('success', 'categorie bien ajouter');
+        //
     }
 
     /**
